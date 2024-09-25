@@ -1,0 +1,126 @@
+#
+# bspwm hotkeys
+#
+
+super + Escape
+    bspc window -c
+# Закрывает текущее окно.
+
+super + {_,ctrl + }Tab
+    bspc window -f {next,prev}
+# Переключается на следующее (или предыдущее) окно.
+
+super + {period,slash}
+    bspc desktop -C {backward,forward}
+# Переключается на предыдущее или следующее рабочее пространство в истории.
+
+super + bracket{left,right}
+    bspc desktop -f {prev,next}
+# Переключается на предыдущее или следующее рабочее пространство.
+
+super + ctrl + bracket{left,right}
+    bspc window -d {prev,next}
+    bspc desktop -f {prev,next}
+# Переключает текущее окно на предыдущее или следующее рабочее пространство и затем переключается на него.
+
+super + {semicolon,apostrophe}
+    bspc desktop -F {vertical,horizontal}
+# Переключает расположение рабочих пространств на вертикальное или горизонтальное.
+
+super + {Left,Down,Up,Right}
+    bspc window -p {left,down,up,right}
+# Перемещает текущее окно в указанном направлении (влево, вниз, вверх, вправо).
+
+super + z
+    bspc window -w last.manual
+# Переключает на последнее вручную установленное окно.
+
+super + ctrl + f
+    bspc window -t floating
+# Переключает текущее окно в режим плавающего (или обратно).
+
+super + {1-9,0}
+    bspc desktop -f ^{1-9,10}
+# Переключается на рабочее пространство с номером от 1 до 10.
+
+super + ctrl + {1-0,0}
+    bspc window -d ^{1-9,10}
+    bspc desktop -f ^{1-9,10}
+# Переключает текущее окно на рабочее пространство с номером от 1 до 10 и затем переключается на него.
+
+super + ctrl + m
+    bspc desktop -l next
+# Переключает на следующее рабочее пространство в списке.
+
+# Mouse bindings
+~button1
+    bspc pointer -g focus
+# Фокусирует окно при нажатии на левую кнопку мыши.
+
+super + button{1-3}
+    bspc pointer -g {move,resize_side,resize_corner}
+# Позволяет перемещать или изменять размер окна при нажатии кнопок мыши с модификатором Super.
+
+super + !button{1-3}
+    bspc pointer -t %i %i
+# Устанавливает действия для кнопок мыши (обычно это для выбора).
+
+super + @button{1-3}
+    bspc pointer -u
+# Освобождает курсор мыши от управления после использования.
+
+#
+# wm independent hotkeys
+#
+alt + f4
+    bash -c ". $HOME/.bash_aliases ; altf4_psyche"
+# Закрывает текущее окно с использованием `bash` и пользовательского скрипта.
+
+super + space
+    xfce4-popup-whiskermenu
+# Открывает меню Whisker в XFCE.
+
+ctrl + super + space
+    xfce4-popup-places
+# Открывает меню "Места" в XFCE.
+
+super + l
+    xflock4
+# Блокирует экран.
+
+super + Return
+    xfce4-terminal
+# Открывает терминал XFCE.
+
+super + f
+    thunar
+# Открывает файловый менеджер Thunar.
+
+super + e
+    thunderbird
+# Открывает почтовый клиент Thunderbird.
+
+super + w
+    firefox
+# Открывает браузер Firefox.
+
+super + t
+    geany
+# Открывает текстовый редактор Geany.
+
+super + o
+    libreoffice
+# Открывает LibreOffice.
+
+super + m
+    quodlibet
+# Открывает музыкальный плеер Quod Libet.
+
+super + g
+    arcadia
+# Открывает приложение Arcadia.
+
+# make sxhkd reload its configuration files:
+super + alt + Escape
+    pkill -USR1 -x sxhkd
+# Перезагружает конфигурационные файлы `sxhkd`, отправляя сигнал USR1 процессу `sxhkd`.
