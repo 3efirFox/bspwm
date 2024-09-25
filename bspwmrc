@@ -1,0 +1,110 @@
+#! /bin/sh
+# Указывает, что этот скрипт должен исполняться с помощью оболочки sh.
+
+bspc config top_padding        24
+# Устанавливает верхний отступ между верхней границей экрана и окнами в 24 пикселя.
+
+bspc config bottom_padding     0
+# Устанавливает нижний отступ между нижней границей экрана и окнами в 0 пикселей.
+
+bspc config left_padding       0
+# Устанавливает левый отступ между левой границей экрана и окнами в 0 пикселей.
+
+bspc config right_padding      0
+# Устанавливает правый отступ между правой границей экрана и окнами в 0 пикселей.
+
+bspc config border_width       3
+# Устанавливает ширину границы окон в 3 пикселя.
+
+bspc config window_gap         16
+# Устанавливает промежуток между окнами в 16 пикселей.
+
+# Borders and gaps
+# Настройки для работы с границами окон и промежутками между ними.
+bspc config borderless_monocle true
+# Включает режим «монокл», в котором окна не имеют границ, чтобы занимать всю доступную область.
+
+bspc config gapless_monocle true
+# Включает режим «монокл», в котором промежутки между окнами убираются.
+
+# Border colors
+# Настройки цветов границ окон.
+bspc config normal_border_color "#484848"
+# Устанавливает цвет границы обычного окна (неактивного) в #484848 (темно-серый).
+
+bspc config focused_border_color "#1F8999"
+# Устанавливает цвет границы активного окна в #1F8999 (бирюзовый).
+
+bspc config urgent_border_color "#B58900"
+# Устанавливает цвет границы для окон в состоянии «срочно» в #B58900 (желтый).
+
+bspc config presel_border_color "#26E2FF"
+# Устанавливает цвет границы для окон при предварительном выборе в #26E2FF (светло-голубой).
+
+# It looks like these options get overridden by Compton...
+# Эти опции могут быть переопределены композитором (например, Compton).
+bspc config normal_frame_opacity 0.75
+# Устанавливает непрозрачность рамки обычного окна на 75%.
+
+bspc config focused_frame_opacity 0.75
+# Устанавливает непрозрачность рамки активного окна на 75%.
+
+# Multihead behavior
+# Настройки поведения для многомониторных конфигураций.
+bspc config remove_disabled_monitors true
+# Убирает отключенные мониторы из управления `bspwm`.
+
+bspc config remove_unplugged_monitors true
+# Убирает отключенные мониторы, которые были отключены физически.
+
+# Focusing behavior
+# Настройки поведения фокуса окон.
+bspc config focus_follows_pointer false
+# Отключает режим, при котором окно фокусируется при наведении указателя мыши.
+
+bspc config history_aware_focus true
+# Включает режим, при котором фокусировка учитывает историю действий пользователя.
+
+bspc config focus_by_distance true
+# Включает фокусировку окон по расстоянию, выбирая ближайшее окно.
+
+# Misc
+# Разные настройки.
+bspc config split_ratio 0.50
+# Устанавливает соотношение разделения окна на две части в 50%.
+
+bspc config auto_alternate true
+# Включает автоматическое чередование окон.
+
+bspc config auto_cancel true
+# Включает автоматическое отмену окна при выборе другого окна.
+
+bspc config initial_polarity first_child
+# Устанавливает начальную полярность окон (порядок отображения) на первое дочернее окно.
+
+# Set up displays
+# Настройка рабочих пространств (дисплеев).
+bspc monitor -d 1 2 3 4
+# Устанавливает 4 рабочих стола с номерами 1, 2, 3 и 4.
+
+# Настройки поведения для конкретных приложений.
+bspc rule -a Conky sticky=on manage=off lower=on
+# Указывает, что Conky должен быть «липким», не управляться `bspwm` и всегда находиться ниже других окон.
+
+bspc rule -a xfce4-session floating=on fullscreen=on
+# Указывает, что окно xfce4-session должно быть плавающим и во весь экран.
+
+bspc rule -a xfce4-panel floating=on manage=off
+# Указывает, что панель xfce4 должна быть плавающей и не управляться `bspwm`.
+
+bspc rule -a wrapper-1.0 floating=on border=off focus=on
+# Указывает, что окно wrapper-1.0 должно быть плавающим, без границ, и фокусироваться при открытии.
+
+bspc rule -a Firefox desktop=^4 focus=on
+# Указывает, что окно Firefox должно открываться на рабочем столе 4 и получать фокус.
+
+bspc rule -a Thunderbird floating=on
+# Указывает, что окно Thunderbird должно быть плавающим.
+
+bspc rule -a Yad floating=on
+# Указывает, что окно Yad должно быть плавающим.
